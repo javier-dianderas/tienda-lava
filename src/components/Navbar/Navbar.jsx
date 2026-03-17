@@ -9,7 +9,6 @@ const Navbar = () => {
                 <button>Tablets</button>
                 <button>Smartwatches</button>
                 <button>Accesorios para móvil</button>
-                <button>Stylus</button>
             </div>
             <CartWidget />
         </nav>
