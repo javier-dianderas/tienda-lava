@@ -4,6 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 // import viteLogo from './assets/vite.svg'
 // import heroImg from './assets/hero.png'
 import './App.css'
+import Navbar from './components/Navbar/Navbar'
+import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 
 // function App() {
 //   const [count, setCount] = useState(0)
@@ -119,16 +121,12 @@ import './App.css'
 //   )
 // }
 
-function App() {
+const App = () => {
   return (
-    <div className='d-flex justify-content-center align-items-center vh-100'>
-      <div className='text-center'>
-        <div className='alert alert-success' role='alert'>
-          React + Vite + Bootstrap is ready!
-        </div>
-        <button className='btn btn-primary'>Click me</button>
-      </div>
-    </div>
+    <>
+      <Navbar></Navbar>
+      <ItemListContainer greetings={'Bienvenidos'}></ItemListContainer>
+    </>
   )
 }
 
