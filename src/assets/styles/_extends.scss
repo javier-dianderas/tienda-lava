@@ -1,0 +1,9 @@
+@use "sass:map";
+@use "./variables";
+
+%button_base {
+    --bs-btn-color: #{map.get(variables.$colores, blanco)};
+    --bs-btn-hover-color: #{map.get(variables.$colores, terciario)};
+    --bs-btn-hover-bg: #{map.get(variables.$colores, secundario)};
+    --bs-btn-hover-border-color: #{map.get(variables.$colores, secundario)};
+}

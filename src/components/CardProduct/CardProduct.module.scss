@@ -1,0 +1,47 @@
+@use "sass:map";
+@use "../../assets/styles/variables";
+
+.wrapper {
+    // background-color: aqua;
+    // border: 1px;
+    // border-style: solid;
+    // border-color: map.get(variables.$colores, terciario);
+    border-radius: 5px;
+    max-width: 250px;
+    // box-shadow: 0.05rem .05rem .05rem 0.1rem map.get(variables.$colores, negro-semistransparente);
+    box-shadow: 0 2px 4px 0 map.get(variables.$colores, negro-semistransparente-suave);
+}
+
+.anchor {
+    text-decoration: none;
+}
+
+.article {
+    padding: 10px;
+    font-size: 0.8rem;
+    color: map.get(variables.$colores, secundario)
+}
+
+.image {
+    width: 219px;
+}
+
+.brand {
+    color: map.get(variables.$colores, terciario);
+    text-transform: uppercase;
+    font-size: 0.6rem;
+    font-weight: bold;
+}
+
+.button {
+    background-color: map.get(variables.$colores, primario);
+    color: map.get(variables.$colores, blanco);
+    padding: 10px;
+    border: 0;
+    border-radius: 5px;
+    width: 100%;
+
+    &:hover {
+        background-color: map.get(variables.$colores, secundario);
+    }
+}

@@ -1,0 +1,33 @@
+@use "sass:math";
+
+@mixin size($width: null, $height: null) {
+    @if $width {
+        width: $width;
+    }
+
+    @if $height {
+        height: $height;
+    }
+}
+
+@mixin grid($rows: null, $columns: null, $row-gap: null, $column-gap: null, $areas: null) {
+    @if $rows {
+        grid-template-rows: $rows;
+    }
+
+    @if $columns {
+        grid-template-columns: $columns;
+    }
+
+    @if $row-gap {
+        row-gap: $row-gap;
+    }
+
+    @if $column-gap {
+        column-gap: $column-gap;
+    }
+
+    @if $areas {
+        grid-template-areas: $areas;
+    }
+}

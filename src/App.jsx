@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 import Navbar from './components/Navbar/Navbar'
 import ItemListContainer from './components/ItemListContainer/ItemListContainer'
+import styles from './App.module.scss'
 
 // function App() {
 //   const [count, setCount] = useState(0)
@@ -123,10 +124,10 @@ import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 
 const App = () => {
   return (
-    <>
+    <div className={styles.main}>
       <Navbar></Navbar>
-      <ItemListContainer greetings={'Bienvenidos'}></ItemListContainer>
-    </>
+      <ItemListContainer></ItemListContainer>
+    </div>
   )
 }
 
