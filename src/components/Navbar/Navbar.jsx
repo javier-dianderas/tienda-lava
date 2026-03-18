@@ -1,15 +1,11 @@
 import CartWidget from "../CartWidget/CartWidget"
+import logo from "../../assets/images/logo_blanco.webp"
+import styles from "./Navbar.module.scss"
 
 const Navbar = () => {
     return (
-        <nav>
-            <h3>Tienda Virtual Lava</h3>
-            {/* <div>
-                <button>Smartphones</button>
-                <button>Tablets</button>
-                <button>Smartwatches</button>
-                <button>Accesorios para móvil</button>
-            </div> */}
+        <nav className={styles.navbar}>
+            <img src={logo} alt="Logo Lava" />
             <CartWidget />
         </nav>
     )

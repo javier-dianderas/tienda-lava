@@ -1,0 +1,11 @@
+@use "sass:map";
+@use "../../assets/styles/variables";
+
+.navbar {
+    background: map.get(variables.$colores, primario);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
