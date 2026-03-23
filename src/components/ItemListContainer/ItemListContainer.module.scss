@@ -1,65 +1,6 @@
 @use "sass:map";
 @use "../../assets/styles/variables";
 
-.container {
-    display: grid;    
-    grid-template-columns: 1fr auto;
-    gap: 10px;
-}
-
-.filters {
-    grid-column-start: 1;
-    grid-column-end: auto;
-}
-
-.filtersTitle {
-    box-shadow: 0 2px 4px 0 map.get(variables.$colores, negro-semistransparente-suave);
-    padding: 10px;
-    font-size: 1rem;
-    font-weight: bold;
-}
-
-.filtersGroup {
-    // background-color: blueviolet;
-    padding: 10px;
-    // border: 1px;
-    // border-color: black;
-    // border-style: solid;
-    border-radius: 5px;
-    margin: 0.5rem;
-    box-shadow: 0 2px 4px 0 map.get(variables.$colores, negro-semistransparente-suave);
-}
-
-.filtersGroup label {
-    display: block;
-    font-size: 1rem;
-}
-
-.filtersGroupRange {
-    display: flex;
-    flex-direction: row;
-}
-
-.filtersGroupRange > input {
-    width: 60px;
-}
-
-.results {
-    grid-column-start: 2;
-    grid-column-end: auto;
-    display: flex;
-    flex-direction: column;
-}
-
-.resultsBar {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    box-shadow: 0 2px 4px 0 map.get(variables.$colores, negro-semistransparente-suave);
-    padding: 10px;
-    // background-color: aqua;
-}
-
 .resultsContent {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
