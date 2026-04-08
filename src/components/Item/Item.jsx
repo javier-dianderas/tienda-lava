@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./Item.module.scss"
 
 const Item = ({product}) => {
@@ -21,7 +22,8 @@ const Item = ({product}) => {
                 </p>
             </section>
             <footer>
-                <button>Ver detalle</button>
+                {/* <button>Ver detalle</button> */}
+                <Link to={`/item/${product.id}`}>Ver detalle</Link>
             </footer>
         </article>
     );

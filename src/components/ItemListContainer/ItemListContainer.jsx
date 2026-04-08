@@ -1,14 +1,18 @@
-import CardProduct from "../CardProduct/CardProduct"
 import { useEffect, useState } from "react"
-import { getProducts } from "../../services/productsService"
+import { getProducts, getProductsByCategoryId } from "../../services/productsService"
 import ItemList from "../ItemList/ItemList"
 import styles from './ItemListContainer.module.scss'
+import { useParams } from "react-router-dom"
 
 const ItemListContainer = () => {
     const [products, setProducts] = useState([])
 
+    const { categoryId } = useParams()
+
+    const asyncFunc = categoryId ? getProductsByCategoryId : getProducts;
+
     useEffect(() => {
-        getProducts()
+        asyncFunc(parseInt(categoryId))
             .then(response => {
                 if(response.status) {
                     setProducts(response.data)
@@ -16,7 +20,7 @@ const ItemListContainer = () => {
             }).catch(error => {
                 console.log("Ocurrió un error", error)
             })
-    }, [])
+    }, [categoryId])
 
     return (
         <div className={styles.resultsContent}>

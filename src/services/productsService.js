@@ -11,6 +11,18 @@ const getProducts = () => {
     });
 }
 
+const getProductsByCategoryId = (categoryId) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if(!productos) {
+                reject({ status: false, message: "No existen datos de productos"});
+            }
+            let productsByCategory = productos.filter(prod => prod.idCategoria === categoryId);
+            resolve({ status: true, data: productsByCategory});
+        }, 1000);
+    });
+}
+
 const getProductById = (id) => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -23,4 +35,4 @@ const getProductById = (id) => {
     });
 }
 
-export { getProducts, getProductById };
+export { getProducts, getProductsByCategoryId, getProductById };
