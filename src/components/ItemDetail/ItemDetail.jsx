@@ -1,10 +1,15 @@
+import { useState } from "react";
 import ItemCount from "../ItemCount/ItemCount";
 import styles from "./ItemDetail.module.scss"
+import { Link } from "react-router";
 
 const ItemDetail = ({product}) => {
+    
+    const [quantityAdded, setQuantityAdded] = useState(0)
 
-    const addItem = () => {
+    const addItem = (quantity) => {
         console.log("producto agregado")
+        setQuantityAdded(quantity)
     }
 
     return (
@@ -27,7 +32,13 @@ const ItemDetail = ({product}) => {
                     </p>
                 </section>
                 <footer>
-                    <ItemCount stock={product.stock} initial={1} onAdd={addItem} />
+                    {
+                        quantityAdded > 0 ? (
+                            <Link to="/cart">Terminar compra</Link>
+                        ) : (
+                            <ItemCount stock={product.stock} initial={1} onAdd={addItem} />
+                        )
+                    }                    
                 </footer>
             </article>
         );

@@ -1,5 +1,6 @@
 @use "sass:map";
 @use "../../assets/styles/variables";
+@use "../../assets/styles/extends";
 
 .card {
     border-radius: 5px;
@@ -44,17 +45,21 @@
     }
 
     footer {
-        button {
-            background-color: map.get(variables.$colores, primario);
-            color: map.get(variables.$colores, blanco);
-            padding: 10px;
-            border: 0;
-            border-radius: 5px;
-            width: 100%;
+        // button {
+        //     background-color: map.get(variables.$colores, primario);
+        //     color: map.get(variables.$colores, blanco);
+        //     padding: 10px;
+        //     border: 0;
+        //     border-radius: 5px;
+        //     width: 100%;
 
-            &:hover {
-                background-color: map.get(variables.$colores, secundario);
-            }
+        //     &:hover {
+        //         background-color: map.get(variables.$colores, secundario);
+        //     }
+        // }
+
+        a {
+            @extend %anchor_base;
         }
     }
 }

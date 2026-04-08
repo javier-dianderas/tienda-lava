@@ -1,9 +1,39 @@
 @use "sass:map";
 @use "./variables";
 
+// %button_base {
+//     --bs-btn-color: #{map.get(variables.$colores, blanco)};
+//     --bs-btn-hover-color: #{map.get(variables.$colores, terciario)};
+//     --bs-btn-hover-bg: #{map.get(variables.$colores, secundario)};
+//     --bs-btn-hover-border-color: #{map.get(variables.$colores, secundario)};
+// }
+
 %button_base {
-    --bs-btn-color: #{map.get(variables.$colores, blanco)};
-    --bs-btn-hover-color: #{map.get(variables.$colores, terciario)};
-    --bs-btn-hover-bg: #{map.get(variables.$colores, secundario)};
-    --bs-btn-hover-border-color: #{map.get(variables.$colores, secundario)};
+    background-color: map.get(variables.$colores, primario);
+    color: map.get(variables.$colores, blanco);
+    padding: 10px;
+    border: 0;
+    border-radius: 5px;
+    width: 100%;
+
+    &:hover {
+        background-color: map.get(variables.$colores, secundario);
+    }
+}
+
+%anchor_base {
+    background-color: map.get(variables.$colores, primario);
+    color: map.get(variables.$colores, blanco);
+    padding: 10px;
+    border: 0;
+    border-radius: 5px;
+    width: 100%;
+    display: block;
+    text-decoration: none;
+    margin-top: 0.5rem;
+    text-align: center;
+
+    &:hover {
+        background-color: map.get(variables.$colores, secundario);
+    }
 }

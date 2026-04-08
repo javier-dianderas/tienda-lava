@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons"
+import styles from "./ItemCount.module.scss"
 
 const ItemCount = ({stock, initial, onAdd}) => {
     const [quantity, setQuantity] = useState(initial)
@@ -16,11 +19,15 @@ const ItemCount = ({stock, initial, onAdd}) => {
     }
 
     return (
-        <div>
+        <div className={styles.itemCount}>
             <div>
-                <button onClick={decrement}></button>
+                <button onClick={decrement}>
+                    <FontAwesomeIcon icon={faMinus} />
+                </button>
                 <h4>{quantity}</h4>
-                <button onClick={increment}></button>
+                <button onClick={increment}>
+                    <FontAwesomeIcon icon={faPlus} />
+                </button>
             </div>
             <div>
                 <button onClick={() => onAdd(quantity)} disabled={!stock}>
