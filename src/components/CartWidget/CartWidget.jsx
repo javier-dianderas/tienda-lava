@@ -3,16 +3,21 @@ import { faCartShopping } from "@fortawesome/free-solid-svg-icons"
 import styles from "./CartWidget.module.scss"
 import { CartContext } from "../../context/CartContext"
 import { useContext } from "react"
+import { Link } from "react-router"
 
 const CartWidget = () => {
-    const contexto = useContext(CartContext)
+    const context = useContext(CartContext);
+    console.log(context);
 
-    console.log(contexto)
+    const { cartQuantity } = useContext(CartContext)
 
     return (
         <div className={styles.cart}>
-            <FontAwesomeIcon icon={faCartShopping} />
-            <span className="px-2">0</span>
+            <Link to="/cart" style={{display: cartQuantity() > 0 ? "block" : "none"}}>
+                <FontAwesomeIcon icon={faCartShopping} />
+            </Link>
+            
+            <span className="px-2">({cartQuantity()})</span>
         </div>
     )    
 }

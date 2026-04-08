@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react"
+import { useState } from "react"
 import { CartContext } from "./CartContext"
 
 export const CartProvider = ({children}) => {
@@ -23,8 +23,22 @@ export const CartProvider = ({children}) => {
         
     }
 
+    const modifyItem = (id, qty) => {
+        if(isInCart(id)) {
+            setCart(
+                cart.map(i => {
+                    if(i.id === id) {
+                        return {...i, quantity: qty}
+                    } else {
+                        return i
+                    }
+                })
+            )
+        }
+    }
+
     const removeItem = (id) => {
-        setCart(cart.filter(item => item.id !== id))
+        setCart(cart.filter(prod => prod.id !== id))
     }
 
     const clear = () => {
@@ -40,15 +54,15 @@ export const CartProvider = ({children}) => {
     }
 
     const isInCart = (id) => {
-        return cart.some(item => item.id === id)
+        return cart.some(prod => prod.id === id)
     }
 
-    const value = useMemo(() => {
-        cart, addItem, removeItem, clear, total, cartQuantity
-    }, [cart])
+    // const value = useMemo(() => {
+    //     cart, addItem, modifyItem, removeItem, clear, total, cartQuantity
+    // }, [cart])
 
     return (
-        <CartContext.Provider value={value}>
+        <CartContext.Provider value={{cart, addItem, modifyItem, removeItem, clear, total, cartQuantity}}>
             {children}
         </CartContext.Provider>
     )
