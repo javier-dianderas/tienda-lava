@@ -1,7 +1,7 @@
 import CartWidget from "../CartWidget/CartWidget"
 import logo from "../../assets/images/logo_blanco.webp"
 import styles from "./Navbar.module.scss"
-import { Link, NavLink } from "react-router-dom"
+import { Link, NavLink } from "react-router"
 import { useEffect, useState } from "react"
 import { getCategories } from "../../services/categoriesService"
 

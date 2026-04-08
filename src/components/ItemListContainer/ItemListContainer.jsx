@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { getProducts, getProductsByCategoryId } from "../../services/productsService"
 import ItemList from "../ItemList/ItemList"
 import styles from './ItemListContainer.module.scss'
-import { useParams } from "react-router-dom"
+import { useParams } from "react-router"
 
 const ItemListContainer = () => {
     const [products, setProducts] = useState([])

@@ -4,7 +4,7 @@ import './App.css'
 import Navbar from './components/Navbar/Navbar'
 import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import styles from './App.module.scss'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router'
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer'
 import { CartProvider } from './context/CartProvider'
 
