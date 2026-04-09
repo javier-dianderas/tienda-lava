@@ -58,12 +58,15 @@ export const CartProvider = ({children}) => {
     }
 
     // const value = useMemo(() => {
-    //     cart, addItem, modifyItem, removeItem, clear, total, cartQuantity
+    //     (cart, addItem, modifyItem, removeItem, clear, total, cartQuantity)
     // }, [cart])
 
     return (
         <CartContext.Provider value={{cart, addItem, modifyItem, removeItem, clear, total, cartQuantity}}>
             {children}
         </CartContext.Provider>
+        // <CartContext.Provider value={{value}}>
+        //     {children}
+        // </CartContext.Provider>
     )
 }

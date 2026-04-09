@@ -2,30 +2,39 @@
 
 .cart {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-
-    div {
-        &:nth-child(1) {
+    grid-template-columns: 2fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+    
+    .cartProducts {
+        display: flex;
+        flex-direction: column;
+        
+        .cartProductsTitle {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+            justify-content: space-between;
+            // background-color: beige;
 
-            div {
-                &:nth-child(1) {
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: space-between;
-                    
-                }
+            .cartProductsTitleButton {
+                @extend %button_base;
+                width: auto;
             }
         }
 
-        &:nth-child(2) {
-            display: flex;
-            flex-direction: column;
-
-            a {
-                @extend %anchor_base;
-            }
+        .cartProductsPanel {
+            padding: 1rem 0;
+            // background-color: aqua;
         }
     }
+
+    .cartResume {
+        display: flex;
+        flex-direction: column;
+
+        a {
+            @extend %anchor_base;
+        }
+    }
+    
 }

@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import ItemCount from "../ItemCount/ItemCount";
+import ItemCountAdd from "../ItemCountAdd/ItemCountAdd";
 import styles from "./ItemDetail.module.scss"
 import { Link } from "react-router";
 import { CartContext } from "../../context/CartContext";
@@ -48,7 +48,7 @@ const ItemDetail = ({product}) => {
                         quantityAdded > 0 ? (
                             <Link to="/cart">Terminar compra</Link>
                         ) : (
-                            <ItemCount stock={product.stock} initial={1} onAdd={handleAddItem} />
+                            <ItemCountAdd stock={product.stock} initial={1} onAdd={handleAddItem} />
                         )
                     }                    
                 </footer>

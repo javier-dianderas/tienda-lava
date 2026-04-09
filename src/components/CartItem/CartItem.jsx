@@ -28,13 +28,13 @@ const CartItem = ({item}) => {
 
     return (
         <article className={styles.cartItem}>
-            <header>                
-            </header>
+            {/* <header>                
+            </header> */}
             <picture>
-                <img src={item.imagen} />
+                <img className={styles.cartItemImage} src={item.imagen} />
             </picture>
-            <section>
-                <h4>{item.nombre}</h4>
+            <section className={styles.cartItemSection}>
+                <span>{item.nombre}</span>
                 <span className={styles.cardBrand}>
                     {item.marca}
                 </span>
@@ -45,9 +45,9 @@ const CartItem = ({item}) => {
                     Stock disponible: {item.stock}
                 </span>
             </section>
-            <footer>
-                <ItemCount stock={item.stock} initial={item.quantity} onAdd={handleModifyQuantity} />
-                <button onClick={handleRemoveItem}>
+            <footer className={styles.cartItemFooter}>
+                <ItemCount className={styles.cartItemFooterItemCount} stock={item.stock} initial={item.quantity} onAdd={handleModifyQuantity} />
+                <button className={styles.cartItemFooterButton} onClick={handleRemoveItem}>
                     <FontAwesomeIcon icon={faTrashCan} />
                 </button>
             </footer>

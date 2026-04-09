@@ -1,0 +1,17 @@
+@use "../../assets/styles/extends";
+
+.itemCountAdd {
+
+    .itemCountComponent {
+        margin-top: 0.5rem;
+    }
+
+    .itemCountAddPanel {
+        margin-top: 0.5rem;
+
+        .itemCountAddPanelButton {
+            @extend %button_base;            
+        }
+    }
+}
+
