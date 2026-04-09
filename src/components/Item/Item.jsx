@@ -3,26 +3,27 @@ import styles from "./Item.module.scss"
 
 const Item = ({product}) => {
     return (
-        <article className={styles.card}>
-            <header>
+        <article className={styles.item}>
+            <header className={styles.itemHeader}>
                 <h2>{product.nombre}</h2>
             </header>
             <picture>
-                <img src={product.imagenes[0]} />
+                <img className={styles.itemImage} src={product.imagenes[0]} />
             </picture>
-            <section>
-                <p className={styles.cardBrand}>
+            <section className={styles.itemSection}>
+                <span className={styles.itemSectionBrand}>
                     {product.marca}
-                </p>
-                <p>
-                    Precio: $ {product.precio}
-                </p>
-                <p>
-                    Stock disponible: {product.stock}
-                </p>
+                </span>
+                <div className={styles.itemSectionKeyValue}>
+                    <span>Precio: </span>
+                    <span>$ {product.precio}</span>
+                </div>
+                <div className={styles.itemSectionKeyValue}>
+                    <span>Stock disponible: </span>
+                    <span>{product.stock}</span>
+                </div>
             </section>
-            <footer>
-                {/* <button>Ver detalle</button> */}
+            <footer className={styles.itemFooter}>
                 <Link to={`/item/${product.id}`}>Ver detalle</Link>
             </footer>
         </article>

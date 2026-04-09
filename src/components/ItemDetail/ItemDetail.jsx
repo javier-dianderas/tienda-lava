@@ -25,34 +25,36 @@ const ItemDetail = ({product}) => {
     }
 
     return (
-            <article className={styles.card}>
-                <header>
-                    <h2>{product.nombre}</h2>
-                </header>
-                <picture>
-                    <img src={product.imagenes[0]} />
-                </picture>
-                <section>
-                    <p className={styles.cardBrand}>
-                        {product.marca}
-                    </p>
-                    <p>
-                        Precio: $ {product.precio}
-                    </p>
-                    <p>
-                        Stock disponible: {product.stock}
-                    </p>
-                </section>
-                <footer>
-                    {
-                        quantityAdded > 0 ? (
-                            <Link to="/cart">Terminar compra</Link>
-                        ) : (
-                            <ItemCountAdd stock={product.stock} initial={1} onAdd={handleAddItem} />
-                        )
-                    }                    
-                </footer>
-            </article>
+            <div className={styles.itemDetail}>
+                <article className={styles.itemDetailCard}>
+                    <header className={styles.itemDetailCardHeader}>
+                        <h2>{product.nombre}</h2>
+                    </header>
+                    <picture>
+                        <img className={styles.itemDetailCardImage} src={product.imagenes[0]} />
+                    </picture>
+                    <section className={styles.itemDetailCardSection}>
+                        <p className={styles.cardBrand}>
+                            {product.marca}
+                        </p>
+                        <p>
+                            Precio: $ {product.precio}
+                        </p>
+                        <p>
+                            Stock disponible: {product.stock}
+                        </p>
+                    </section>
+                    <footer className={styles.itemDetailCardFooter}>
+                        {
+                            quantityAdded > 0 ? (
+                                <Link to="/cart">Terminar compra</Link>
+                            ) : (
+                                <ItemCountAdd stock={product.stock} initial={1} onAdd={handleAddItem} />
+                            )
+                        }                    
+                    </footer>
+                </article>
+            </div>
         );
 }
 

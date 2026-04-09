@@ -2,54 +2,56 @@
 @use "../../assets/styles/variables";
 @use "../../assets/styles/extends";
 
-.card {
-    border-radius: 5px;
-    max-width: 250px;
-    box-shadow: 0 2px 4px 0 map.get(variables.$colores, negro-semistransparente-suave);
-    padding: 10px;
-    font-size: 0.8rem;
-    color: map.get(variables.$colores, secundario);
+.itemDetail {
+    .itemDetailCard {
+        border-radius: 5px;
+        max-width: 250px;
+        box-shadow: 0 2px 4px 0 map.get(variables.$colores, negro-semistransparente-suave);
+        padding: 10px;
+        font-size: 0.8rem;
+        color: map.get(variables.$colores, secundario);
 
-    header {
-        h2 {
-            font-size: 1rem;
-            font-weight: bold;
+        .itemDetailCardHeader {
+            h2 {
+                font-size: 1rem;
+                font-weight: bold;
+            }
         }
-    }
 
-    picture {
-        img {
+        
+        .itemDetailCardImage {
             width: 219px;
         }
-    }
+        
 
-    section {
-        p {
-            &:nth-child(1) {
-                color: map.get(variables.$colores, terciario);
-                text-transform: uppercase;
-                font-size: 0.8rem;
-                font-weight: bold;
-                padding: 0;
-                margin: 0;
+        .itemDetailCardSection {
+            p {
+                &:nth-child(1) {
+                    color: map.get(variables.$colores, terciario);
+                    text-transform: uppercase;
+                    font-size: 0.8rem;
+                    font-weight: bold;
+                    padding: 0;
+                    margin: 0;
+                }
+
+                &:nth-child(2), &:nth-child(3) {
+                    font-size: 0.8rem;
+                    padding: 0;
+                    margin: 0;
+                }
+
             }
-
-            &:nth-child(2), &:nth-child(3) {
-                font-size: 0.8rem;
-                padding: 0;
-                margin: 0;
-            }
-
-        }
-    }
-
-    footer {
-        button {
-            @extend %button_base;
         }
 
-        a {
-            @extend %anchor_base;
+        .itemDetailCardFooter {
+            // button {
+            //     @extend %button_base;
+            // }
+
+            a {
+                @extend %anchor_base;
+            }
         }
     }
 }
