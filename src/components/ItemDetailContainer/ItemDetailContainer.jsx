@@ -21,9 +21,9 @@ const ItemDetailContainer = () => {
     }, [itemId])
 
     return (
-        <div>
+        <>
             {product !== null && <ItemDetail product={product} />}
-        </div>
+        </>
     )
 }
 

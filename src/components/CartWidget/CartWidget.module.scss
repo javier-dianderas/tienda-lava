@@ -1,6 +1,6 @@
 @use "sass:map";
 @use "../../assets/styles/variables";
 
-.cart {
+.cartWidget {
     color: map.get(variables.$colores, blanco);
 }

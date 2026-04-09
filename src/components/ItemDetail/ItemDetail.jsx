@@ -3,6 +3,7 @@ import ItemCountAdd from "../ItemCountAdd/ItemCountAdd";
 import styles from "./ItemDetail.module.scss"
 import { Link } from "react-router";
 import { CartContext } from "../../context/CartContext";
+import Rating from "../Rating/Rating";
 
 const ItemDetail = ({product}) => {
     
@@ -34,20 +35,28 @@ const ItemDetail = ({product}) => {
                         <img className={styles.itemDetailCardImage} src={product.imagenes[0]} />
                     </picture>
                     <section className={styles.itemDetailCardSection}>
-                        <p className={styles.cardBrand}>
+                        <span className={styles.itemDetailCardSectionBrand}>
                             {product.marca}
-                        </p>
-                        <p>
-                            Precio: $ {product.precio}
-                        </p>
-                        <p>
-                            Stock disponible: {product.stock}
-                        </p>
+                        </span>
+                        <div className={styles.itemDetailCardSectionKeyValue}>
+                            <span>Precio: </span>
+                            <span>$ {product.precio}</span>
+                        </div>
+                        <div className={styles.itemDetailCardSectionKeyValue}>
+                            <span>Stock disponible: </span>
+                            <span>{product.stock}</span>
+                        </div>
+                        <div>
+                            <Rating scale={5} value={product.rating} />
+                        </div>
                     </section>
                     <footer className={styles.itemDetailCardFooter}>
                         {
                             quantityAdded > 0 ? (
-                                <Link to="/cart">Terminar compra</Link>
+                                <>
+                                    <Link to="/cart">Ir al carrito</Link>
+                                    <Link to="/">Agregar otro producto</Link>
+                                </>
                             ) : (
                                 <ItemCountAdd stock={product.stock} initial={1} onAdd={handleAddItem} />
                             )

@@ -12,7 +12,7 @@ const CartWidget = () => {
     const { cartQuantity } = useContext(CartContext)
 
     return (
-        <div className={styles.cart}>
+        <div className={styles.cartWidget}>
             <Link to="/cart" style={{display: cartQuantity() > 0 ? "block" : "none"}}>
                 <FontAwesomeIcon icon={faCartShopping} />
             </Link>
