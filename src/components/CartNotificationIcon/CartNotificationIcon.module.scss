@@ -1,0 +1,26 @@
+@use "sass:map";
+@use "../../assets/styles/variables";
+
+.cartNotificationIcon {
+    position: relative;
+    // display: inline-block;
+    // font-size: 1rem;
+
+    .cartNotificationIconBadge {
+        position: absolute;
+        top: -6px;
+        right: -12px;
+
+        background-color: map.get(variables.$colores, blanco);;
+        color: map.get(variables.$colores, primario);
+
+        border: 1px solid map.get(variables.$colores, primario);
+        border-radius: 50%;
+        padding: 2px 6px;
+        font-size: 9px;
+        font-weight: bold;
+
+        min-width: 16px;
+        text-align: center;
+    }
+}
