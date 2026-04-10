@@ -3,4 +3,5 @@
 
 .cartWidget {
     color: map.get(variables.$colores, blanco);
+    display: flex;
 }

@@ -8,18 +8,20 @@ const ItemCount = ({stock, initial, onIncrement, onDecrement, className = ""}) =
 
     const increment = () => {
         if(quantity < stock) {
-            setQuantity(quantity + 1)
+            const newQuantity = quantity + 1
+            setQuantity(newQuantity)            
             if(onIncrement) {
-                onIncrement(quantity)
+                onIncrement(newQuantity)
             }
         }
     }
 
     const decrement = () => {
         if(quantity > 1) {
-            setQuantity(quantity - 1)
+            const newQuantity = quantity - 1
+            setQuantity(newQuantity)
             if(onDecrement) {
-                onDecrement(quantity)
+                onDecrement(newQuantity)
             }
         }
     }

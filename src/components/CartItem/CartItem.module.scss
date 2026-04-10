@@ -1,3 +1,5 @@
+@use "sass:map";
+@use "../../assets/styles/variables";
 @use "../../assets/styles/extends";
 
 .cartItem {
@@ -19,7 +21,29 @@
         flex-direction: column;
         width: 100%;
         padding: 10px;
-        // background-color: blue;
+
+            .cartItemSectionName {
+                font-size: 1rem;
+                font-weight: bold;
+            }
+        
+            .cartItemSectionBrand {
+                color: map.get(variables.$colores, terciario);
+                text-transform: uppercase;
+                font-size: 0.8rem;
+                font-weight: bold;
+            }
+
+            .cartItemSectionKeyValue {
+                span {
+                    font-size: 0.8rem;                
+
+                    &:nth-child(1) {
+                        font-weight: bold;
+                    }
+                }
+            }
+
     }
 
     .cartItemFooter {

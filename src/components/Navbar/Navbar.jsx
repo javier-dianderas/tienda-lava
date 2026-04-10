@@ -26,7 +26,7 @@ const Navbar = () => {
             <Link to={`/`}>
                 <img src={logo} alt="Logo Lava" />
             </Link>
-            <div>
+            <div className={styles.navbarMenu}>
                 { categories !== null && categories.map(cat => <NavLink key={cat.id} to={`/category/${cat.id}`}>{cat.nombre}</NavLink>) }
             </div>
             <CartWidget />

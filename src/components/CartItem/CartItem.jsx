@@ -34,16 +34,20 @@ const CartItem = ({item}) => {
                 <img className={styles.cartItemImage} src={item.imagen} />
             </picture>
             <section className={styles.cartItemSection}>
-                <span>{item.nombre}</span>
-                <span className={styles.cardBrand}>
+                <span className={styles.cartItemSectionName}>
+                    {item.nombre}
+                </span>
+                <span className={styles.cartItemSectionBrand}>
                     {item.marca}
                 </span>
-                <span>
-                    Precio: $ {item.precio}
-                </span>
-                <span>
-                    Stock disponible: {item.stock}
-                </span>
+                <div className={styles.cartItemSectionKeyValue}>
+                    <span>Precio: </span>
+                    <span>$ {item.precio}</span>
+                </div>
+                <div className={styles.cartItemSectionKeyValue}>
+                    <span>Stock disponible: </span>
+                    <span>{item.stock}</span>
+                </div>                
             </section>
             <footer className={styles.cartItemFooter}>
                 <ItemCount className={styles.cartItemFooterItemCount} stock={item.stock} initial={item.quantity} onAdd={handleModifyQuantity} />
