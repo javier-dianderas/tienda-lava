@@ -1,4 +1,4 @@
-import { collection, getDocs, query, where, getDoc } from "firebase/firestore";
+import { collection, getDocs, query, where, getDoc, doc } from "firebase/firestore";
 import { db } from "./firebase";
 
 const getProducts = async () => {
@@ -26,7 +26,7 @@ const getProductsByCategoryId = async (categoryId) => {
 
 const getProductById = async (id) => {
     try {
-        const productoRef = collection(db, "productos", id)
+        const productoRef = doc(db, "productos", id)
         const productoSnapshot = await getDoc(productoRef)
         if(!productoSnapshot.exists()) {
             return { status: false, message: `No existe el producto con id ${id}` }

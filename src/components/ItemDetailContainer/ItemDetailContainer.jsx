@@ -10,7 +10,7 @@ const ItemDetailContainer = () => {
     const { itemId } = useParams()
 
     useEffect(() => {
-        getProductById(parseInt(itemId))
+        getProductById(itemId)
             .then(response => {
                 if(response.status) {
                     setProduct(response.data)
