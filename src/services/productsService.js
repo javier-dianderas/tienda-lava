@@ -1,38 +1,41 @@
-import { productos } from "../assets/data/datos";
+import { collection, getDocs, query, where, getDoc } from "firebase/firestore";
+import { db } from "./firebase";
 
-const getProducts = () => {
-    return new Promise((resolve, reject) => {
-        setTimeout(()=> {
-            if(!productos) {
-                reject({ status: false, message: "No existen datos de productos"});
-            }
-            resolve({ status: true, data: productos});
-        }, 1000);
-    });
+const getProducts = async () => {
+    try {
+        const productosCollection = collection(db, "productos")
+        const productosSnapshot = await getDocs(productosCollection)
+        const productos = productosSnapshot.docs.map(doc => ({id: doc.id, ...doc.data()}))
+        return { status: true, data: productos};
+    }
+    catch(err) {
+        return { status: false, message: `Error al obtener productos: ${err}`}
+    }
 }
 
-const getProductsByCategoryId = (categoryId) => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            if(!productos) {
-                reject({ status: false, message: "No existen datos de productos"});
-            }
-            let productsByCategory = productos.filter(prod => prod.idCategoria === categoryId);
-            resolve({ status: true, data: productsByCategory});
-        }, 1000);
-    });
+const getProductsByCategoryId = async (categoryId) => {
+    try { 
+        const productosCollection = query(collection(db, "productos"), where("idCategoria", "==", categoryId))
+        const productosSnapshot = await getDocs(productosCollection)
+        const productos = productosSnapshot.docs.map(doc => ({id: doc.id, ...doc.data()}))
+        return { status: true, data: productos};
+    } catch (err) {
+        return { status: false, message: `Error al obtener productos: ${err}`};
+    }
 }
 
-const getProductById = (id) => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            if(!productos) {
-                reject({ status: false, message: "No existen datos de productos"});
-            }
-            let product = productos.find(prod => prod.id === id);
-            resolve({status: true, data: product});
-        }, 1000);
-    });
+const getProductById = async (id) => {
+    try {
+        const productoRef = collection(db, "productos", id)
+        const productoSnapshot = await getDoc(productoRef)
+        if(!productoSnapshot.exists()) {
+            return { status: false, message: `No existe el producto con id ${id}` }
+        }
+        const producto = { id: productoSnapshot.id, ...productoSnapshot.data()}
+        return { status: true, data: producto }
+    } catch(err){
+        return { status: false, message: `Error al obtener el producto: ${err}` }
+    }
 }
 
 export { getProducts, getProductsByCategoryId, getProductById };
