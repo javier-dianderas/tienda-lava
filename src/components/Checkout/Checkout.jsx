@@ -2,13 +2,15 @@ import { Timestamp } from "firebase/firestore"
 import { CartContext } from "../../context/CartContext"
 import { useContext, useState } from "react"
 import { addOrder } from "../../services/ordersService"
+import CheckoutForm from "../CheckoutForm/CheckoutForm"
 
 const Checkout = () => {
 
     const [loading, setLoading] = useState(false)
     const [orderId, setOrderId] = useState('')
+    const [mensaje, setMensaje] = useState('')
 
-    const [cart, total, clear] = useContext(CartContext)
+    const { cart, total, clear } = useContext(CartContext)
 
     const createOrder = async ({name, phone, email}) => {
         setLoading(true)
@@ -19,15 +21,19 @@ const Checkout = () => {
                     name, phone, email
                 },
                 items : cart,
-                total: total,
+                total: total(),
                 date: Timestamp.fromDate(new Date())
             }
 
-            const id = await addOrder(order)
-            setOrderId(id)
-            clear()
+            const respuesta = await addOrder(order)
+            if(respuesta.status) {
+                setOrderId(respuesta.data)
+                clear()
+            } else {
+                setMensaje(`Ocurrio un error: ${respuesta.message}`)
+            }
         } catch (err) {
-            return <h1>Ocurrio un error: {err}</h1>
+            setMensaje(`Ocurrio un error: ${err}`)
         } finally {
             setLoading(false)
         }
@@ -39,6 +45,10 @@ const Checkout = () => {
 
     if(orderId) {
         return <h1>El id de su orden es {orderId}</h1>
+    }
+
+    if(mensaje) {
+        return <h1>El id de su orden es {mensaje}</h1>
     }
 
     return (
