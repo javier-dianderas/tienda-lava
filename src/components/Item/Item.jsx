@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import styles from "./Item.module.scss"
+import { formatCurrency } from "../../utils/formatters";
 
 const Item = ({product}) => {
     return (
@@ -16,7 +17,7 @@ const Item = ({product}) => {
                 </span>
                 <div className={styles.itemSectionKeyValue}>
                     <span>Precio: </span>
-                    <span>$ {product.precio}</span>
+                    <span>{formatCurrency(product.precio)}</span>
                 </div>
                 <div className={styles.itemSectionKeyValue}>
                     <span>Stock disponible: </span>

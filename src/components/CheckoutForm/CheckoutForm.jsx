@@ -1,4 +1,5 @@
 import { useState } from "react"
+import styles from "./CheckoutForm.module.scss"
 
 const CheckoutForm = ({onConfirm}) => {
     const [name, setName] = useState('')
@@ -37,8 +38,9 @@ const CheckoutForm = ({onConfirm}) => {
     }
 
     return (
-        <div>
-            <form onSubmit={handleConfirm}>
+        <div className={styles.checkoutForm}>
+            <span className={styles.checkoutFormTitle}>Checkout</span>
+            <form className={styles.checkoutFormBody} onSubmit={handleConfirm}>
                 <div className="form-floating mb-3">
                     <input id="nombre" className={`form-control ${errores.name ? "is-invalid" : "" }`} type="text" value={name} onChange={({target}) => setName(target.value)} />
                     <label htmlFor="nombre">Nombre</label>
@@ -54,7 +56,7 @@ const CheckoutForm = ({onConfirm}) => {
                     <label htmlFor="email">Email</label>
                 </div>
                 <div>
-                    <button type="submit">Crear Orden</button>
+                    <button className={styles.checkoutFormBodyButton} type="submit">Crear Orden</button>
                 </div>
             </form>
         </div>

@@ -3,16 +3,21 @@ import { CartContext } from "../../context/CartContext"
 import { useContext, useState } from "react"
 import { addOrder } from "../../services/ordersService"
 import CheckoutForm from "../CheckoutForm/CheckoutForm"
+import useAsyncState from "../../hooks/useAsyncState"
+import AsyncResult from "../AsyncResult/AsyncResult"
+import styles from "./Checkout.module.scss"
+import { Link } from "react-router"
 
 const Checkout = () => {
-
-    const [loading, setLoading] = useState(false)
+    
     const [orderId, setOrderId] = useState('')
-    const [mensaje, setMensaje] = useState('')
+    const {loading, setLoading, error, setError} = useAsyncState()
 
     const { cart, total, clear } = useContext(CartContext)
 
     const createOrder = async ({name, phone, email}) => {
+        setOrderId("")
+        setError("")
         setLoading(true)
 
         try {
@@ -26,36 +31,34 @@ const Checkout = () => {
             }
 
             const respuesta = await addOrder(order)
-            if(respuesta.status) {
-                setOrderId(respuesta.data)
-                clear()
-            } else {
-                setMensaje(`Ocurrio un error: ${respuesta.message}`)
-            }
+            if(!respuesta.status) {
+                setError(`Ocurrio un error: ${respuesta.message}`)
+                return
+            }            
+
+            setOrderId(respuesta.data)
+            clear()
         } catch (err) {
-            setMensaje(`Ocurrio un error: ${err}`)
+            setError(`Ocurrio un error: ${err.message || err}`)
         } finally {
             setLoading(false)
         }
     }
 
-    if(loading) {
-        return <h1>Se esta generando su orden...</h1>
-    }
-
     if(orderId) {
-        return <h1>El id de su orden es {orderId}</h1>
-    }
-
-    if(mensaje) {
-        return <h1>El id de su orden es {mensaje}</h1>
+        return (
+            <div className={styles.checkout}>
+                <span className={styles.checkoutSpan}>El id de su orden es {orderId}</span>
+                <Link className={styles.checkoutButton} to="/">Volver al catalogo</Link>
+            </div>
+            
+        )
     }
 
     return (
-        <div>
-            <h1>Checkout</h1>
-            <CheckoutForm onConfirm={createOrder} />
-        </div>
+        <AsyncResult loading={loading} messageLoading="Se esta generando su orden" error={error}>                            
+            <CheckoutForm onConfirm={createOrder} />            
+        </AsyncResult>
     )
 }
 

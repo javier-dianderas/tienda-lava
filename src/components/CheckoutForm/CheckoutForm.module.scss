@@ -1,0 +1,21 @@
+@use "../../assets/styles/extends";
+
+.checkoutForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+
+    .checkoutFormTitle {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+    .checkoutFormBody {
+        min-width: 600px;
+
+        .checkoutFormBodyButton {
+            @extend %button_base;
+            width: auto;
+        }
+    }
+}

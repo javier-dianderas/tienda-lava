@@ -5,6 +5,7 @@ import ItemCount from "../ItemCount/ItemCount"
 import styles from "./CartItem.module.scss"
 import { useContext } from "react"
 import { CartContext } from "../../context/CartContext"
+import { formatCurrency } from "../../utils/formatters"
 
 
 const CartItem = ({item}) => {
@@ -42,7 +43,7 @@ const CartItem = ({item}) => {
                 </span>
                 <div className={styles.cartItemSectionKeyValue}>
                     <span>Precio: </span>
-                    <span>$ {item.precio}</span>
+                    <span>{formatCurrency(item.precio)}</span>
                 </div>
                 <div className={styles.cartItemSectionKeyValue}>
                     <span>Stock disponible: </span>

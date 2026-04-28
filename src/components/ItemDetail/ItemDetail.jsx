@@ -4,6 +4,7 @@ import styles from "./ItemDetail.module.scss"
 import { Link } from "react-router";
 import { CartContext } from "../../context/CartContext";
 import Rating from "../Rating/Rating";
+import { formatCurrency } from "../../utils/formatters";
 
 const ItemDetail = ({product}) => {
     
@@ -38,7 +39,7 @@ const ItemDetail = ({product}) => {
                         </span>
                         <div className={styles.itemDetailCardSectionKeyValue}>
                             <span>Precio: </span>
-                            <span>$ {product.precio}</span>
+                            <span>{formatCurrency(product.precio)}</span>
                         </div>
                         <div className={styles.itemDetailCardSectionKeyValue}>
                             <span>Stock disponible: </span>
