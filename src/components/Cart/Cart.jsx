@@ -10,31 +10,30 @@ const Cart = () => {
     const { cart, total, clear, cartQuantity } = useContext(CartContext)
 
     return (
-            <div className={styles.cart}>
-                <div className={styles.cartProducts}>
-                    <div className={styles.cartProductsTitle}>
-                        <h3>Tu carrito</h3>
-                        <button className={styles.cartProductsTitleButton} onClick={() => clear()}>Limpiar carrito</button>
+        <div className={styles.cart}>
+            <div className={styles.cartProducts}>
+                <div className={styles.cartProductsTitle}>
+                    <h3>Tu carrito</h3>
+                    <button className={styles.cartProductsTitleButton} onClick={() => clear()}>Limpiar carrito</button>
+                </div>
+                {
+                    cartQuantity() === 0 ?
+                    <div>No hay productos en el carrito</div> :
+                    <div className={styles.cartProductsPanel}>
+                        { cart.map(prod => <CartItem key={prod.id} item={prod} />)  }
                     </div>
-                    {
-                        cartQuantity() === 0 ?
-                        <div>No hay productos en el carrito</div> :
-                        <div className={styles.cartProductsPanel}>
-                            { cart.map(prod => <CartItem key={prod.id} item={prod} />)  }
-                        </div>
-                    }
-                </div>
-                <div className={styles.cartResume}>
-                    <h3>Resumen del pedido</h3>
-                    <span className={styles.cartResumeTotal}>Total: {formatCurrency(total())}</span>
-                    {
-                        cartQuantity() === 0 ?
-                        <span className={styles.cartResumeDisabledLink} >Finalizar compra</span> :
-                        <Link to="/checkout">Finalizar compra</Link>
-                    }
-                </div>
+                }
             </div>
-        // )
+            <div className={styles.cartResume}>
+                <h3>Resumen del pedido</h3>
+                <span className={styles.cartResumeTotal}>Total: {formatCurrency(total())}</span>
+                {
+                    cartQuantity() === 0 ?
+                    <span className={styles.cartResumeDisabledLink} >Finalizar compra</span> :
+                    <Link to="/checkout">Finalizar compra</Link>
+                }
+            </div>
+        </div>
     )
 }
 

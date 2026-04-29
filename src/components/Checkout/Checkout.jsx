@@ -12,7 +12,6 @@ const Checkout = () => {
     
     const [orderId, setOrderId] = useState('')
     const {loading, setLoading, error, setError} = useAsyncState()
-
     const { cart, total, clear } = useContext(CartContext)
 
     const createOrder = async ({name, phone, email}) => {
@@ -29,13 +28,11 @@ const Checkout = () => {
                 total: total(),
                 date: Timestamp.fromDate(new Date())
             }
-
             const respuesta = await addOrder(order)
             if(!respuesta.status) {
                 setError(`Ocurrio un error: ${respuesta.message}`)
                 return
-            }            
-
+            }
             setOrderId(respuesta.data)
             clear()
         } catch (err) {
@@ -49,9 +46,8 @@ const Checkout = () => {
         return (
             <div className={styles.checkout}>
                 <span className={styles.checkoutSpan}>El id de su orden es {orderId}</span>
-                <Link className={styles.checkoutButton} to="/">Volver al catalogo</Link>
+                <Link className={styles.checkoutButton} to="/">Volver al cátalogo</Link>
             </div>
-            
         )
     }
 

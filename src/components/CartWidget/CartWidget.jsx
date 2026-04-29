@@ -12,13 +12,9 @@ const CartWidget = () => {
 
     return (
         <div className={styles.cartWidget}>
-            {/* style={{display: cartQuantity() > 0 ? "block" : "none"}} */}
-            <Link to="/cart">
-                {/* <FontAwesomeIcon icon={faCartShopping} /> */}
+            <Link to="/cart">                
                 <CartNotificationIcon count={cartQuantity()} ></CartNotificationIcon>
-            </Link>
-            
-            {/* <span className="px-2">({cartQuantity()})</span> */}
+            </Link>            
         </div>
     )    
 }

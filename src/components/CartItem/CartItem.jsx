@@ -7,19 +7,11 @@ import { useContext } from "react"
 import { CartContext } from "../../context/CartContext"
 import { formatCurrency } from "../../utils/formatters"
 
-
 const CartItem = ({item}) => {
-
-    //const [quantityModified, setQuantityModified] = useState(item.quantity)
 
     const { modifyItem, removeItem } = useContext(CartContext)
 
     const handleModifyQuantity = (quantityModified) => {
-        //setQuantityModified(quantityModified)
-
-        //Validar que pasa si llega a 0 el contador
-
-        console.log("CartItem", quantityModified)
         modifyItem(item.id, quantityModified)
     }
 
@@ -29,8 +21,6 @@ const CartItem = ({item}) => {
 
     return (
         <article className={styles.cartItem}>
-            {/* <header>                
-            </header> */}
             <picture>
                 <img className={styles.cartItemImage} src={item.imagen} />
             </picture>
